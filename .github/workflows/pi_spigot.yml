@@ -1,0 +1,53 @@
+﻿name: pi_spigot
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+jobs:
+  gcc-clang-native:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        standard: [ c++20, c++2b ]
+        compiler: [ g++-12, clang++-14 ]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+      - name: update-tools
+        run: sudo apt install g++-12 clang-14
+      - name: gcc-clang-native
+        run: |
+          echo "gcc-clang-native"
+          echo "${{ matrix.compiler }} -Werror -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -O3 -std=${{ matrix.standard }} pi_spigot.cpp -I. -o pi_spigot.exe"
+          ${{ matrix.compiler }} -Werror -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -O3 -std=${{ matrix.standard }} pi_spigot.cpp -I. -o pi_spigot.exe
+          echo "ls ./pi_spigot.exe"
+          ls -la ./pi_spigot.exe
+          ./pi_spigot.exe
+  apple-gcc-clang-native:
+    runs-on: macos-latest
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        standard: [ c++20, c++2b ]
+        compiler: [ g++, clang++ ]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+      - name: apple-gcc-clang-native
+        run: |
+          echo "apple-gcc-clang-native"
+          echo "${{ matrix.compiler }} -Werror -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -O3 -std=${{ matrix.standard }} pi_spigot.cpp -I. -o pi_spigot.exe"
+          ${{ matrix.compiler }} -Werror -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -O3 -std=${{ matrix.standard }} pi_spigot.cpp -I. -o pi_spigot.exe
+          echo "ls ./pi_spigot.exe"
+          ls -la ./pi_spigot.exe
+          ./pi_spigot.exe

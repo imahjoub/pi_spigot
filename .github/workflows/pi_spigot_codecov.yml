@@ -1,0 +1,40 @@
+﻿name: pi_spigot_codecov
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  gnumake-gcc-gcov-native:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        standard: [ c++2a ]
+        compiler: [ g++ ]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+      - name: update-tools
+        run: sudo apt install lcov
+      - name: gnumake-gcc-gcov-native
+        run: |
+          echo "build and run gcov/lcov/genhtml"
+          g++ -x c++ -c -mtune=native -march=native -O2 -Wall -Wextra -Wconversion -Wsign-conversion -std=c++2a -fno-inline-functions -fprofile-arcs -ftest-coverage -DPI_SPIGOT_HAS_COVERAGE pi_spigot.cpp -o pi_spigot.o
+          g++ -mtune=native -march=native -O2 -Wall -Wextra -Wconversion -Wsign-conversion -std=c++2a -fno-inline-functions -fprofile-arcs -ftest-coverage -DPI_SPIGOT_HAS_COVERAGE pi_spigot.o -o pi_spigot.exe
+          ./pi_spigot.exe
+          gcov --all-blocks --branch-counts --branch-probabilities --function-summaries --unconditional-branches --object-directory . --demangled-names ./pi_spigot.cpp
+          lcov --rc lcov_branch_coverage=1 -c --directory . --output-file coverage_unfiltered.info
+          lcov --rc lcov_branch_coverage=1 --remove coverage_unfiltered.info '/usr/*' --output-file coverage.info
+      - name: upload-codecov
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage.info
+          fail_ci_if_error: true
+          functionalities: fix
