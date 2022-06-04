@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pi_spigot", "pi_spigot.vcxproj", "{2E663405-3F53-44D0-9CDA-55A279B89BB3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{5E1DFF08-F151-41E2-BD71-2FF5FD48088E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{CACDB083-904B-4BB7-819B-58A3923533CC}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\pi_spigot.yml = .github\workflows\pi_spigot.yml
+		.github\workflows\pi_spigot_codecov.yml = .github\workflows\pi_spigot_codecov.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_doc", "_doc", "{12A4FEF1-AD0A-4896-B4F7-86959E9F2541}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E663405-3F53-44D0-9CDA-55A279B89BB3}.Debug|x64.ActiveCfg = Debug|x64
+		{2E663405-3F53-44D0-9CDA-55A279B89BB3}.Debug|x64.Build.0 = Debug|x64
+		{2E663405-3F53-44D0-9CDA-55A279B89BB3}.Debug|x86.ActiveCfg = Debug|Win32
+		{2E663405-3F53-44D0-9CDA-55A279B89BB3}.Debug|x86.Build.0 = Debug|Win32
+		{2E663405-3F53-44D0-9CDA-55A279B89BB3}.Release|x64.ActiveCfg = Release|x64
+		{2E663405-3F53-44D0-9CDA-55A279B89BB3}.Release|x64.Build.0 = Release|x64
+		{2E663405-3F53-44D0-9CDA-55A279B89BB3}.Release|x86.ActiveCfg = Release|Win32
+		{2E663405-3F53-44D0-9CDA-55A279B89BB3}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CACDB083-904B-4BB7-819B-58A3923533CC} = {5E1DFF08-F151-41E2-BD71-2FF5FD48088E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5CFA195D-8BB2-4979-8207-C04BA8EABF02}
+	EndGlobalSection
+EndGlobal
