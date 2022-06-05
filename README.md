@@ -2,7 +2,7 @@
 ==================
 
 [![Build Status](https://github.com/iaitelmahjoub/pi_spigot/actions/workflows/pi_spigot.yml/badge.svg)](https://github.com/iaitelmahjoub/pi_spigot/actions)
-[![codecov](https://codecov.io/gh/iaitelmahjoub/pi_spigot/branch/master/graph/badge.svg?token=qHWXbNXQPx)](https://codecov.io/gh/iaitelmahjoub/pi_spigot)
+[![codecov](https://codecov.io/gh/iaitelmahjoub/pi_spigot/branch/main/graph/badge.svg?token=qHWXbNXQPx)](https://codecov.io/gh/iaitelmahjoub/pi_spigot)
 [![Boost Software License 1.0](https://img.shields.io/badge/license-BSL%201.0-blue.svg)](https://github.com/iaitelmahjoub/pi_spigot/blob/main/LICENSE_1_0.txt)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/iaitelmahjoub/pi_spigot)](https://github.com/iaitelmahjoub/pi_spigot)
 
