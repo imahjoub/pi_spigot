@@ -120,11 +120,10 @@ on a PC platform running GCC 9 with instamntiation of
 
 Testing and continuous integration runs on GitHub Actions.
 Various OS/compiler combinations are used including
-GCC/clang/MSVC. Code coverage uses GCC/gcov/lcov
-with quality gate provided by third-party Codecov.
+GCC/clang/MSVC.
 
 Code coverage uses GCC/gcov/lcov and has a
-quality-gate with comparison/baseline-check provided by
+quality-gate with comparison/baseline-check provided by third-party Codecov.
 [Codecov](https://app.codecov.io/gh/iaitelmahjoub/pi_spigot).
 
 TBD Provide use linters and describe them.
