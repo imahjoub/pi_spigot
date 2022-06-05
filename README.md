@@ -8,13 +8,28 @@
 
 This repository is work in progress.
 
-## Mathematical details
-
-pi_spigot calculates many decimal digits of the mathematical constant
+The pi_spigot repository implements
+a spigot-type algorithm modern C++ template code.
+It calculates many decimal
+digits of the mathematical constant
 ![pi](https://latex.codecogs.com/svg.image?\pi).
-It uses a slow quadratic
-(order ![N2](https://latex.codecogs.com/svg.image?N^{2}))
-spigot-type algorithm.
+
+The spigot-type algorithm used here has rather slow quadratic
+order ![N2](https://latex.codecogs.com/svg.image?N^{2})
+computational complexity. So you won't break
+any digit records with this implementation,
+but it is capable of readily computing many thousands
+of digits (up to a 100,000 decimal digits or more)
+of ![pi](https://latex.codecogs.com/svg.image?\pi).
+right out of the box --- and with just a few lines
+of computatoinal code.
+
+The default setting of the tests computes
+![hundredthousand](https://latex.codecogs.com/svg.image?\100,001)
+decimal digits of
+![pi](https://latex.codecogs.com/svg.image?\pi).
+
+## Mathematical details
 
 Spigot-type algorithms are known for various mathematical constants
 including lograithms and
@@ -88,15 +103,52 @@ actual instantiation takes place in the
 
 ## Timing and memory consumption
 
-TBD
+Timing and memory consumption are provided in closed form equations
+in [3]. In that work, we find empirically that the memory grows linearly
+with input size while the computational complexity grows
+quadratically.
+
+The table below lists memory consumption and computation time
+on a PC platform running GCC 9 with instamntiation of
+`pi_spigot_single<N, 9U>`, where `N` varies.
+
+|N (digits)  | Memory Consumption | Operation Count  | Time (s) |
+| ---------- | ------------------ | ---------------- | -------- |
+| 10,001     | 137,788            | 19,155,868       |  0.23    |
+| 50,001     | 688,900            | 478,496,610      |  5.2     |
+| 100,001    | 1,377,788          | 1,913,780,868    |  21      |
 
 ## Testing, continuous integration and quality
 
-TBD
+Testing and continuous integration runs on GitHub Actions.
+Various OS/compiler combinations are used including
+GCC/clang/MSVC. Code coverage uses GCC/gcov/lcov
+with quality gate provided by third-party Codecov.
+
+TBD provide Codecov link.
+
+TBD Use linters and describe them.
 
 ## Possible extensions
 
-TBD
+The pi-spigot algorithm in this repository can successfully
+compute up to a million digits of ![pi](https://latex.codecogs.com/svg.image?\pi).
+It is, however, very slow with computational complexity
+growing quadratically in proportion to digit size.
+
+Looking at the implementation of the algorithm, however,
+it might be possible to parallelize some or part of the
+algorithmic loops. If this is possible, a modern GPU
+massive parallelization would reduce the calculation
+time dramatically.
+
+At the moment, the `LoopDigit` parameter is limited to
+9 decimal digits due to the size of multiplication
+which needs to remain bounded within `uint64_t`.
+Possible extension to 128-bit or multiple-precision
+integral types would allow for much larger
+digit counts per iteration, however, at the
+cost of higher time for theindividual operations.
 
 ## References
 
