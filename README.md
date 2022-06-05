@@ -6,8 +6,6 @@
 [![Boost Software License 1.0](https://img.shields.io/badge/license-BSL%201.0-blue.svg)](https://github.com/ckormanyos/pi_spigot/blob/main/LICENSE_1_0.txt)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ckormanyos/pi_spigot)](https://github.com/ckormanyos/pi_spigot)
 
-This repository is work in progress.
-
 The pi_spigot repository implements
 a spigot-type algorithm modern C++ template code.
 It calculates many decimal
@@ -17,12 +15,12 @@ digits of the mathematical constant
 The spigot-type algorithm used here has rather slow quadratic
 order ![N2](https://latex.codecogs.com/svg.image?N^{2})
 computational complexity. So you won't break
-any digit records with this implementation,
-but it is capable of readily computing many thousands
+any digit or speed records with this implementation.
+It is, however, capable of readily computing many thousands
 of digits (up to a 100,000 decimal digits or more)
-of ![pi](https://latex.codecogs.com/svg.image?\pi).
-right out of the box --- and with just a few lines
-of computatoinal code.
+of ![pi](https://latex.codecogs.com/svg.image?\pi)
+--- right out of the box and with just a few lines
+of computational code.
 
 The default setting of the tests computes
 ![hundredthousand](https://latex.codecogs.com/svg.image?\100,001)
@@ -90,16 +88,16 @@ A C++ alias can be used to conveniently set the
 digit characteristics of the spigot calculation
 used in the This exact template instantiation is used in the
 `pi_spigot_single` class. The default configuration
-in the pi_spigot repository `10001` decimal digits
+in the pi_spigot repository uses `100001` decimal digits
 with digit granularity of `9`, as shown below.
 
-```
-using pi_spigot_type = math::constants::pi_spigot_single<10001U, 9U>;
+```cpp
+using pi_spigot_type = math::constants::pi_spigot_single<100001U, 9U>;
 ```
 
-This is done in two steps, whereby the
-actual instantiation takes place in the
-`test_pi_spigot_single()` template subroutine.
+The template instantiation is done in two steps in the code
+(via secondary subroutine) and the instantiation actually
+takes place in the `test_pi_spigot_single()` template subroutine.
 
 ## Timing and memory consumption
 
@@ -125,9 +123,7 @@ Various OS/compiler combinations are used including
 GCC/clang/MSVC. Code coverage uses GCC/gcov/lcov
 with quality gate provided by third-party Codecov.
 
-TBD provide Codecov link.
-
-TBD Use linters and describe them.
+TBD Provide Codecov link and also use linters and describe them.
 
 ## Possible extensions
 
@@ -148,7 +144,7 @@ which needs to remain bounded within `uint64_t`.
 Possible extension to 128-bit or multiple-precision
 integral types would allow for much larger
 digit counts per iteration, however, at the
-cost of higher time for theindividual operations.
+cost of higher time for the individual operations.
 
 ## References
 
