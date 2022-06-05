@@ -24,7 +24,7 @@ The basic spigot algorithm for computing digits of
 ![pi](https://latex.codecogs.com/svg.image?\pi)
 in base-10 is given by
 
-https://latex.codecogs.com/svg.image?\pi\,=\,2\,&plus;\,\dfrac{1}{3}\Biggl(2\,&plus;\,\dfrac{2}{5}\Biggl(2\,&plus;\,\dfrac{3}{7}\Biggl(2\,&plus;\,\ldots\Biggr)\Biggr)\Biggr)
+![spigotalgo](https://latex.codecogs.com/svg.image?\pi\,=\,2\,&plus;\,\dfrac{1}{3}\Biggl(2\,&plus;\,\dfrac{2}{5}\Biggl(2\,&plus;\,\dfrac{3}{7}\Biggl(2\,&plus;\,\ldots\Biggr)\Biggr)\Biggr))
 
 In the code, this equation is primarily implemented in the
 `calculate()` method of the `pi_spigot_single` template class
