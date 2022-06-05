@@ -7,7 +7,7 @@
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ckormanyos/pi_spigot)](https://github.com/ckormanyos/pi_spigot)
 
 The pi_spigot repository implements
-a spigot-type algorithm modern C++ template code.
+a spigot-type algorithm in modern C++ template code.
 It calculates many decimal
 digits of the mathematical constant
 ![pi](https://latex.codecogs.com/svg.image?\pi).
@@ -85,19 +85,20 @@ decimal digits, which still _fits_ inside
 `uint64_t` without overflow.
 
 A C++ alias can be used to conveniently set the
-digit characteristics of the spigot calculation
-used in the This exact template instantiation is used in the
-`pi_spigot_single` class. The default configuration
-in the pi_spigot repository uses `100001` decimal digits
-with digit granularity of `9`, as shown below.
+digit characteristics used in the spigot calculation.
 
 ```cpp
 using pi_spigot_type = math::constants::pi_spigot_single<100001U, 9U>;
 ```
 
-The template instantiation is done in two steps in the code
-(via secondary subroutine) and the instantiation actually
-takes place in the `test_pi_spigot_single()` template subroutine.
+The default configuration
+in the pi_spigot repository uses `100001` decimal digits
+with digit granularity of `9`, as shown below.
+
+The exact template instantiation is actually done in two steps in the code
+(via secondary subroutine). The instantiation actually
+takes place with named parameters in the `test_pi_spigot_single()`
+template subroutine.
 
 ## Timing and memory consumption
 
