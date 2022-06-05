@@ -30,7 +30,7 @@ decimal digits of
 ## Mathematical details
 
 Spigot-type algorithms are known for various mathematical constants
-including lograithms and
+including logarithms and
 ![pi](https://latex.codecogs.com/svg.image?\pi).
 
 The basic spigot algorithm for computing digits of
@@ -120,10 +120,13 @@ on a PC platform running GCC 9 with instamntiation of
 
 Testing and continuous integration runs on GitHub Actions.
 Various OS/compiler combinations are used including
-GCC/clang/MSVC. Code coverage uses GCC/gcov/lcov
-with quality gate provided by third-party Codecov.
+GCC/clang/MSVC.
 
-TBD Provide Codecov link and also use linters and describe them.
+Code coverage uses GCC/gcov/lcov and has a
+quality-gate with comparison/baseline-check provided by third-party Codecov.
+[Codecov](https://app.codecov.io/gh/iaitelmahjoub/pi_spigot).
+
+TBD Provide use linters and describe them.
 
 ## Possible extensions
 
