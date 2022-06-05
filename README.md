@@ -93,8 +93,7 @@ using pi_spigot_type = math::constants::pi_spigot_single<100001U, 9U>;
 
 The default configuration
 in the pi_spigot repository uses `100001` decimal digits
-with digit granularity of `9`, as shown below.
-
+with digit granularity of `9`, as shown.
 The exact template instantiation is actually done in two steps in the code
 (via secondary subroutine). The instantiation actually
 takes place with named parameters in the `test_pi_spigot_single()`
