@@ -1,4 +1,4 @@
-pi_spigot
+﻿pi_spigot
 ==================
 
 [![Build Status](https://github.com/ckormanyos/pi_spigot/actions/workflows/pi_spigot.yml/badge.svg)](https://github.com/ckormanyos/pi_spigot/actions)
@@ -23,6 +23,7 @@ including lograithms and
 The basic spigot algorithm for computing digits of
 ![pi](https://latex.codecogs.com/svg.image?\pi)
 in base-10 is given by
+(Eq. 6.1, Sect. 6.1, page 78 of Arndt and Haenel [2]):
 
 ![spigotalgo](https://latex.codecogs.com/svg.image?\pi\,=\,2\,&plus;\,\dfrac{1}{3}\Biggl(2\,&plus;\,\dfrac{2}{5}\Biggl(2\,&plus;\,\dfrac{3}{7}\Biggl(2\,&plus;\,\ldots\Biggr)\Biggr)\Biggr))
 
@@ -96,3 +97,27 @@ TBD
 ## Possible extensions
 
 TBD
+
+## References
+
+TBD More (and better) bibliographical formatting.
+
+The expression of this algorithm (as used in this repository)
+has been further influenced by descriptions
+in the original publication in [1] and also by [2].
+
+[1] S. Rabinowitz and S. Wagon:
+_A_ _Spigot_ _Algorithm_ _for_ _the_ _Digits_ _of_ _Pi_,
+American Mathematical Monthly 102: 195--203, 1995
+
+[2] J. Arndt and C. Haenel:
+![pi](https://latex.codecogs.com/svg.image?\pi) _Unleashed_
+(Springer Verlag, Heidelberg, 2001)
+
+The pi_spigot implementation in this repository
+has been inspired by Section 10.8 of [3].
+
+[3] C.M. Kormanyos: _Real-Time_ _C++:_
+_Efficient_ _Object-Oriented_
+_and_ _Template_ _Microcontroller_ Programming_, _Fourth_ _Edition_
+(Springer, Heidelberg, 2021). ISBN 9783662629956.
