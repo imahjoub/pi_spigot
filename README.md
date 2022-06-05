@@ -25,7 +25,7 @@ The basic spigot algorithm for computing digits of
 in base-10 is given by
 (Eq. 6.1, Sect. 6.1, page 78 of Arndt and Haenel [2]):
 
-![spigotalgo](https://latex.codecogs.com/svg.image?\pi\,=\,2\,&plus;\,\dfrac{1}{3}\Biggl(2\,&plus;\,\dfrac{2}{5}\Biggl(2\,&plus;\,\dfrac{3}{7}\Biggl(2\,&plus;\,\ldots\Biggr)\Biggr)\Biggr))
+![spigotalgo](https://latex.codecogs.com/svg.image?\pi=2&plus;\dfrac{1}{3}\Biggl(2&plus;\dfrac{2}{5}\Biggl(2&plus;\dfrac{3}{7}\Biggl(2&plus;\ldots\Biggr)\Biggr)\Biggr))
 
 In the code, this equation is primarily implemented in the
 `calculate()` method of the `pi_spigot_single` template class
@@ -100,11 +100,12 @@ TBD
 
 ## References
 
-TBD More (and better) bibliographical formatting.
-
+The original publication of the description of the spigot algorithm
+can be found in [1].
 The expression of this algorithm (as used in this repository)
-has been further influenced by descriptions
-in the original publication in [1] and also by [2].
+has been further influenced by descriptions in [2].
+The pi_spigot implementation in C++ code in this repository
+has been inspired by Section 10.8 of [3].
 
 [1] S. Rabinowitz and S. Wagon:
 _A_ _Spigot_ _Algorithm_ _for_ _the_ _Digits_ _of_ _Pi_,
@@ -114,10 +115,7 @@ American Mathematical Monthly 102: 195--203, 1995
 ![pi](https://latex.codecogs.com/svg.image?\pi) _Unleashed_
 (Springer Verlag, Heidelberg, 2001)
 
-The pi_spigot implementation in this repository
-has been inspired by Section 10.8 of [3].
-
 [3] C.M. Kormanyos: _Real-Time_ _C++:_
 _Efficient_ _Object-Oriented_
-_and_ _Template_ _Microcontroller_ Programming_, _Fourth_ _Edition_
+_and_ _Template_ _Microcontroller_ _Programming_, _4th_ _Edition_
 (Springer, Heidelberg, 2021). ISBN 9783662629956.
