@@ -29,7 +29,7 @@
 #include <string>
 #include <vector>
 
-namespace math::constants {
+namespace math { namespace constants {
 
 template<const std::uint32_t ResultDigit,
          const std::uint32_t LoopDigit>
@@ -262,7 +262,7 @@ public:
   }
 };
 
-} // namespace math::constants
+} } // namespace math::constants
 
 template<const std::uint32_t result_digit,
          const std::uint32_t loop_digit>
