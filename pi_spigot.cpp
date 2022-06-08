@@ -130,11 +130,11 @@ public:
 
 protected:
   // TBD: Reduce (or eliminate) reliance on protected members.
-  static inline std::uint32_t  my_c = 0U;
-  static inline std::uint64_t  my_d = 0U;
-  static inline std::uint32_t  my_j = 0U;
-  static inline std::uintmax_t my_operation_count = 0U;
-  static inline std::uint32_t  my_output_count    = 0U;
+  std::uint32_t  my_c = 0U;
+  std::uint64_t  my_d = 0U;
+  std::uint32_t  my_j = 0U;
+  std::uintmax_t my_operation_count = 0U;
+  std::uint32_t  my_output_count    = 0U;
 
   constexpr pi_spigot_base() = default;
 
