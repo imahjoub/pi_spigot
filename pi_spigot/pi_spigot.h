@@ -2,6 +2,7 @@
   #define SPI_SPIGOT_2022_06_08_H
 
   #include <algorithm>
+  #include <array>
   #include <cstdint>
   #include <ctime>
   #include <iomanip>
@@ -117,15 +118,14 @@
 
     static auto pi_control_string() -> const std::string&;
 
-  public:
-    // TBD: Reduce (or eliminate) reliance on protected members.
-    std::uint32_t  my_c = 0U;
-    std::uint64_t  my_d = 0U;
-    std::uint32_t  my_j = 0U;
-    std::uintmax_t my_operation_count = 0U;
-    std::uint32_t  my_output_count    = 0U;
-
   protected:
+    // TBD: Reduce (or eliminate) reliance on protected members.
+    std::uint32_t  my_c = 0U;               // NOLINT(misc-non-private-member-variables-in-classes)
+    std::uint64_t  my_d = 0U;               // NOLINT(misc-non-private-member-variables-in-classes)
+    std::uint32_t  my_j = 0U;               // NOLINT(misc-non-private-member-variables-in-classes)
+    std::uintmax_t my_operation_count = 0U; // NOLINT(misc-non-private-member-variables-in-classes)
+    std::uint32_t  my_output_count    = 0U; // NOLINT(misc-non-private-member-variables-in-classes)
+
     template<typename OutputInputIterator>
     auto do_extract_digit_group(OutputInputIterator output_first) -> void
     {
@@ -194,7 +194,7 @@
 
     ~pi_spigot_single() override = default;
 
-    auto operator=(pi_spigot_single&&) -> pi_spigot_single& = default;
+    auto operator=(pi_spigot_single&&) noexcept -> pi_spigot_single& = default;
 
     // TBD: Can this (and basically the whole calculatoin) be made C++20 constexpr?
 
@@ -270,7 +270,8 @@
     #if defined(PI_SPIGOT_HAS_COVERAGE)
     static const char* pi_control_data[ 12U] =
     #else
-    static const char* pi_control_data[104U] =
+    //static const char* pi_control_data[104U] =
+    static const std::array<std::string, 104U> pi_control_data =
     #endif
     {
       "3",
