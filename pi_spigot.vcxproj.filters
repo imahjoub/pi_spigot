@@ -5,6 +5,9 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Source Files\pi_spigot">
+      <UniqueIdentifier>{54477658-e81d-4d11-a665-f5033d87cad9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pi_spigot.cpp">
@@ -13,5 +16,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="codecov.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pi_spigot\pi_spigot.h">
+      <Filter>Source Files\pi_spigot</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
