@@ -186,6 +186,8 @@
 
     pi_spigot_single& operator=(const pi_spigot_single&) = default;
 
+    pi_spigot_single(pi_spigot_single&&) = default;
+
     ~pi_spigot_single() override = default;
 
     // TBD: Can this (and basically the whole calculatoin) be made C++20 constexpr?
