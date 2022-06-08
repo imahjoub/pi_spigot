@@ -25,7 +25,7 @@ jobs:
       - name: gnumake-gcc-gcov-native
         run: |
           echo "build and run gcov/lcov/genhtml"
-          g++ -x c++ -c -mtune=native -march=native -O2 -Wall -Wextra -Wconversion -Wsign-conversion -std=c++2a -fno-inline-functions -fprofile-arcs -ftest-coverage -DPI_SPIGOT_HAS_COVERAGE pi_spigot.cpp -o pi_spigot.o
+          g++ -x c++ -c -mtune=native -march=native -O2 -Wall -Wextra -Wconversion -Wsign-conversion -std=c++2a -fno-inline-functions -fprofile-arcs -ftest-coverage -DPI_SPIGOT_HAS_COVERAGE pi_spigot.cpp -I. -o pi_spigot.o
           g++ -mtune=native -march=native -O2 -Wall -Wextra -Wconversion -Wsign-conversion -std=c++2a -fno-inline-functions -fprofile-arcs -ftest-coverage -DPI_SPIGOT_HAS_COVERAGE pi_spigot.o -o pi_spigot.exe
           ./pi_spigot.exe
           gcov --all-blocks --branch-counts --branch-probabilities --function-summaries --unconditional-branches --object-directory . --demangled-names ./pi_spigot.cpp
