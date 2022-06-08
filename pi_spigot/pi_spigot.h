@@ -87,13 +87,13 @@
 
     pi_spigot_base(const pi_spigot_base&) = delete;
 
-    pi_spigot_base(pi_spigot_base&&) = default;
+    pi_spigot_base(pi_spigot_base&&) = delete;
 
     virtual ~pi_spigot_base() = default;
 
     auto operator=(const pi_spigot_base&) -> pi_spigot_base& = delete;
 
-    //auto operator=(pi_spigot_base&&) -> pi_spigot_base& = delete;
+    auto operator=(pi_spigot_base&&) -> pi_spigot_base& = delete;
 
     static constexpr auto get_output_static_size() -> std::uint32_t
     {
