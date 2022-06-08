@@ -117,7 +117,7 @@
 
     static auto pi_control_string() -> const std::string&;
 
-  protected:
+  public:
     // TBD: Reduce (or eliminate) reliance on protected members.
     std::uint32_t  my_c = 0U;
     std::uint64_t  my_d = 0U;
@@ -125,6 +125,7 @@
     std::uintmax_t my_operation_count = 0U;
     std::uint32_t  my_output_count    = 0U;
 
+  protected:
     template<typename OutputInputIterator>
     auto do_extract_digit_group(OutputInputIterator output_first) -> void
     {
@@ -187,11 +188,13 @@
 
     pi_spigot_single(const pi_spigot_single&) = default;
 
-    pi_spigot_single& operator=(const pi_spigot_single&) = default;
+    auto operator=(const pi_spigot_single&) -> pi_spigot_single& = default;
 
-    pi_spigot_single(pi_spigot_single&&) = default;
+    pi_spigot_single(pi_spigot_single&&) noexcept = default;
 
     ~pi_spigot_single() override = default;
+
+    auto operator=(pi_spigot_single&&) -> pi_spigot_single& = default;
 
     // TBD: Can this (and basically the whole calculatoin) be made C++20 constexpr?
 
@@ -206,10 +209,8 @@
       // input memory for the internal calculation details
       // as well as output memory for the result of pi.
 
-      base_class_type::my_c = UINT32_C(0);
-
-      base_class_type::my_output_count = UINT32_C(0);
-
+      base_class_type::my_c               = UINT32_C(0);
+      base_class_type::my_output_count    = UINT32_C(0);
       base_class_type::my_operation_count = UINTMAX_C(0);
 
       // Operation count Mathematica(R), example for loop_digit=9.
