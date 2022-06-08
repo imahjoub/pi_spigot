@@ -73,4 +73,4 @@ jobs:
           echo "+++ print clang-tidy version"
           clang-tidy --version
           echo "+++ running clang-tidy"
-          clang-tidy -checks="*,-cppcoreguidelines-avoid-magic-numbers,-readability-magic-numbers,-llvm-header-guard,-cppcoreguidelines-pro-bounds-constant-array-index,-fuchsia-trailing-return,-readability-identifier-naming,-cppcoreguidelines-non-private-member-variables-in-classes" --extra-arg=-std=c++14 pi_spigot.cpp -- -I. -isystem/usr/*
+          clang-tidy -checks="*,-cppcoreguidelines-avoid-magic-numbers,-readability-magic-numbers,-llvm-header-guard,-cppcoreguidelines-pro-bounds-constant-array-index,-fuchsia-trailing-return,-readability-identifier-naming,-cppcoreguidelines-non-private-member-variables-in-classes" --extra-arg=-std=c++14 pi_spigot.cpp -- -I. -isystem*usr/lib*
