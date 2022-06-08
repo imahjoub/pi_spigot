@@ -83,12 +83,17 @@
   public:
     using output_value_type = std::uint8_t;
 
+    constexpr pi_spigot_base() = default;
+
     pi_spigot_base(const pi_spigot_base&) = delete;
+
+    pi_spigot_base(pi_spigot_base&&) = default;
 
     virtual ~pi_spigot_base() = default;
 
     auto operator=(const pi_spigot_base&) -> pi_spigot_base& = delete;
-    auto operator=(pi_spigot_base&&) -> pi_spigot_base& = delete;
+
+    //auto operator=(pi_spigot_base&&) -> pi_spigot_base& = delete;
 
     static constexpr auto get_output_static_size() -> std::uint32_t
     {
@@ -119,8 +124,6 @@
     std::uint32_t  my_j = 0U;
     std::uintmax_t my_operation_count = 0U;
     std::uint32_t  my_output_count    = 0U;
-
-    constexpr pi_spigot_base() = default;
 
     template<typename OutputInputIterator>
     auto do_extract_digit_group(OutputInputIterator output_first) -> void
