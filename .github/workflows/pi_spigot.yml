@@ -51,3 +51,26 @@ jobs:
           echo "ls ./pi_spigot.exe"
           ls -la ./pi_spigot.exe
           ./pi_spigot.exe
+  gnumake-clang-tidy-12-native:
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        standard: [ c++20 ]
+        compiler: [ g++, clang++ ]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+      - name: update-tools
+        run:
+          sudo apt install clang clang-tidy
+      - name: gnumake-clang-tidy-12-native
+        run: |
+          echo "+++ print clang-tidy version"
+          clang-tidy --version
+          echo "+++ running clang-tidy"
+          clang-tidy -checks="*,-cppcoreguidelines-avoid-magic-numbers,-readability-magic-numbers,-llvm-header-guard,-cppcoreguidelines-pro-bounds-constant-array-index,-fuchsia-trailing-return,-readability-identifier-naming,-cppcoreguidelines-non-private-member-variables-in-classes" --extra-arg=-std=c++14 pi_spigot.cpp --system-headers=0

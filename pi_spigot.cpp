@@ -71,8 +71,8 @@ protected:
   // of 9, 8 or 4 digits per loop, corresponding
   // to the template parameter loop_digit.
 
-  static constexpr std::uint32_t result_digit = ResultDigit;
-  static constexpr std::uint32_t loop_digit   = LoopDigit;
+  static constexpr auto result_digit = ResultDigit;
+  static constexpr auto loop_digit   = LoopDigit;
 
   static_assert(result_digit <= UINT32_C(1001001),
                 "Error: result_digit exceeds its limit of 1,001,001");
@@ -80,7 +80,7 @@ protected:
   static_assert((loop_digit >= UINT32_C(4)) && (loop_digit <= UINT32_C(9)),
                 "Error: loop_digit is outside its range of 4...9");
 
-  static constexpr std::uint32_t input_scale(std::uint32_t x)
+  static constexpr auto input_scale(std::uint32_t x) -> std::uint32_t
   {
     return
       static_cast<std::uint32_t>
@@ -106,22 +106,22 @@ public:
   auto operator=(const pi_spigot_base&) -> pi_spigot_base& = delete;
   auto operator=(pi_spigot_base&&) -> pi_spigot_base& = delete;
 
-  static constexpr std::uint32_t get_output_static_size()
+  static constexpr auto get_output_static_size() -> std::uint32_t
   {
     return result_digit;
   }
 
-  static constexpr std::uint32_t get_input_static_size()
+  static constexpr auto get_input_static_size() -> std::uint32_t
   {
     return input_scale(get_output_static_size());
   }
 
-  constexpr std::uintmax_t get_operation_count() const
+  constexpr auto get_operation_count() const -> std::uintmax_t
   {
     return my_operation_count;
   }
 
-  constexpr std::uint32_t get_output_digit_count() const
+  constexpr auto get_output_digit_count() const -> std::uint32_t
   {
     return (std::min)(my_j, get_output_static_size());
   }
@@ -130,11 +130,11 @@ public:
 
 protected:
   // TBD: Reduce (or eliminate) reliance on protected members.
-  std::uint32_t  my_c;
-  std::uint64_t  my_d;
-  std::uint32_t  my_j;
-  std::uintmax_t my_operation_count;
-  std::uint32_t  my_output_count;
+  std::uint32_t  my_c = 0U;
+  std::uint64_t  my_d = 0U;
+  std::uint32_t  my_j = 0U;
+  std::uintmax_t my_operation_count = 0U;
+  std::uint32_t  my_output_count    = 0U;
 
   constexpr pi_spigot_base() = default;
 
