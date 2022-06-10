@@ -1,10 +1,10 @@
 ﻿pi_spigot
 ==================
 
-[![Build Status](https://github.com/iaitelmahjoub/pi_spigot/actions/workflows/pi_spigot.yml/badge.svg)](https://github.com/iaitelmahjoub/pi_spigot/actions)
-[![codecov](https://codecov.io/gh/iaitelmahjoub/pi_spigot/branch/main/graph/badge.svg?token=qHWXbNXQPx)](https://codecov.io/gh/iaitelmahjoub/pi_spigot)
+[![Build Status](https://github.com/iaitelmahjoub/pi_spigot/actions/workflows/pi_spigot.yml/badge.svg)](https://github.com/imahjoub/pi_spigot/actions)
+[![codecov](https://codecov.io/gh/imahjoub/pi_spigot/branch/main/graph/badge.svg?token=qHWXbNXQPx)](https://codecov.io/gh/imahjoub/pi_spigot)
 [![Boost Software License 1.0](https://img.shields.io/badge/license-BSL%201.0-blue.svg)](https://github.com/iaitelmahjoub/pi_spigot/blob/main/LICENSE_1_0.txt)
-[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/iaitelmahjoub/pi_spigot)](https://github.com/iaitelmahjoub/pi_spigot)
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/imahjoub/pi_spigot)](https://github.com/iaitelmahjoub/pi_spigot)
 
 The pi_spigot repository implements
 a spigot-type algorithm in modern C++ template code.
@@ -123,7 +123,7 @@ Various OS/compiler combinations are used including
 GCC/clang/MSVC.
 
 Code coverage uses GCC/gcov/lcov and has a
-quality-gate with comparison/baseline-check provided by third-party [Codecov](https://app.codecov.io/gh/iaitelmahjoub/pi_spigot).
+quality-gate with comparison/baseline-check provided by third-party [Codecov](https://app.codecov.io/gh/imahjoub/pi_spigot).
 
 TBD Provide use linters and describe them.
 
