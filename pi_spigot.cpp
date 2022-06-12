@@ -15,6 +15,43 @@
 // below, however, only allow for testing up to about 100,000
 // decimal digits.
 
+// Support up to one million one thousand and one decimal digits.
+// In this program, however, we only use up to about 100 thousand
+// decimal digits.
+
+// Table of calculation characteristics
+//   digits(*)   operation count   time[s]   memory[byte]
+//  -----------------------------------------------------
+//   100,001(9)    1,913,780,868      21       1,377,788
+//    50,001(9)      478,496,610       5.3       688,900
+//    25,001(9)      119,649,849       1.4       344,456
+//    10,001(9)       19,155,868       0.23      137,788
+//     5,001(9)        4,794,110       0.055      68,900
+//     1,001(9)          193,368       0.002      13,788
+
+//    50,001(8)      527,446,878
+//    25,001(8)      131,887,503
+//    10,001(8)       21,114,378
+
+//    54,932(4)    1,320,263,154
+//    50,001(4)    1,093,875,003
+//    25,001(4)      273,500,003
+//    10,001(4)       43,775,003
+//     5,001(4)       10,950,003
+//     2,001(4)        1,755,003
+//     1,001(4)          440,003
+//       501(4)          110,628
+//       201(4)           18,003
+//       101(4)            4,628
+//        51(4)            1,222
+//        21(4)              228
+//        11(4)               72
+
+// (*) Here, the number in parentheses such as
+// (9), (8) or (4) means calculating groups
+// of 9, 8 or 4 digits per loop, corresponding
+// to the template parameter loop_digit.
+
 // cd /mnt/c/Users/User/Documents/Ks/PC_Software/Test
 // g++ -Wall -Wextra -Wpedantic -O3 -std=c++11 -finline-functions -Wconversion -Wsign-conversion pi_spigot.cpp -o pi_spigot.exe
 
@@ -24,9 +61,9 @@
 
 template<const std::uint32_t result_digit,
          const std::uint32_t loop_digit>
-auto test_pi_spigot_single() -> bool
+auto test_pi_spigot() -> bool
 {
-  using pi_spigot_type = math::constants::pi_spigot_single<result_digit, loop_digit>;
+  using pi_spigot_type = math::constants::pi_spigot<result_digit, loop_digit>;
 
   using input_container_type  = std::vector<std::uint32_t>;
   using output_container_type = std::vector<std::uint8_t>;
@@ -86,9 +123,9 @@ auto test_pi_spigot_single() -> bool
 auto main() -> int
 {
   #if defined(PI_SPIGOT_HAS_COVERAGE)
-  const bool result_is_ok = test_pi_spigot_single< 10001U, 9U>();
+  const bool result_is_ok = test_pi_spigot< 10001U, 9U>();
   #else
-  const bool result_is_ok = test_pi_spigot_single<100001U, 9U>();
+  const bool result_is_ok = test_pi_spigot<100001U, 9U>();
   #endif
 
   std::cout << "result_is_ok: " << std::boolalpha << result_is_ok << std::endl;
