@@ -318,7 +318,7 @@
   {
     std::string str_result;
 
-    for(auto pstr : pi_control_data)
+    for(const auto pstr : pi_control_data)
     {
       str_result += std::string(pstr);
     }
