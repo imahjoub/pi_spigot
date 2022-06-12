@@ -7,7 +7,6 @@
   #include <ctime>
   #include <iomanip>
   #include <iterator>
-  #include <numeric>
   #include <string>
   #include <vector>
 
@@ -31,6 +30,8 @@
                   "Error: loop_digit is outside its range of 4...9");
 
   public:
+    static const std::string pi_control_string;
+
     using output_value_type = std::uint8_t;
 
     constexpr pi_spigot() = default;
@@ -193,7 +194,6 @@
       my_output_count += n;
     }
 
-  private:
     // 103,010 decimal digits of pi.
     #if defined(PI_SPIGOT_HAS_COVERAGE)
     static constexpr std::array<const char*,  12U> pi_control_data =
@@ -309,19 +309,22 @@
       "2359648070"
       #endif
     };
-
-  public:
-    static constexpr auto pi_control_string() -> std::string
-    {
-      return std::accumulate(std::cbegin(pi_control_data),
-                             std::cend  (pi_control_data),
-                             std::string(),
-                             [](std::string&& str_in, const char* pstr_next) -> std::string
-                             {
-                               return str_in + std::string(pstr_next);
-                             });
-    }
   };
+
+  template<const std::uint32_t ResultDigit,
+           const std::uint32_t LoopDigit>
+  const std::string pi_spigot<ResultDigit, LoopDigit>::pi_control_string =
+  []() -> std::string
+  {
+    std::string str_result;
+
+    for(auto pstr : pi_control_data)
+    {
+      str_result += std::string(pstr);
+    }
+
+    return str_result;
+  }();
 
   #if (__cplusplus >= 201703L)
   } // namespace math::constants
