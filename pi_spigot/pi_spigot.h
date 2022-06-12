@@ -326,7 +326,7 @@
   {
     std::string str_result;
 
-    for(auto pstr : pi_control_data) // NOLINT(llvm-qualified-auto)
+    for(auto pstr : pi_control_data) // NOLINT(llvm-qualified-auto,readability-qualified-auto)
     {
       str_result += std::string(pstr);
     }
