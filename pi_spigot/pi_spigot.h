@@ -1,3 +1,11 @@
+﻿///////////////////////////////////////////////////////////////////////////////
+//  Copyright Iliass Mahjoub 2022.
+//  Copyright Christopher Kormanyos 2019 - 2022.
+//  Distributed under the Boost Software License,
+//  Version 1.0. (See accompanying file LICENSE_1_0.txt
+//  or copy at http://www.boost.org/LICENSE_1_0.txt)
+//
+
 #ifndef SPI_SPIGOT_2022_06_08_H
   #define SPI_SPIGOT_2022_06_08_H
 
@@ -7,7 +15,6 @@
   #include <ctime>
   #include <iomanip>
   #include <iterator>
-  #include <numeric>
   #include <string>
   #include <vector>
 
@@ -18,44 +25,9 @@
   #endif
   template<const std::uint32_t ResultDigit,
            const std::uint32_t LoopDigit>
-  class pi_spigot_base
+  class pi_spigot
   {
-  protected:
-    // Support up to one million one thousand and one decimal digits.
-
-    // Table of calculation characteristics
-    //   digits(*)   operation count   time[s]   memory[byte]
-    //  -----------------------------------------------------
-    //   100,001(9)    1,913,780,868      21       1,377,788
-    //    50,001(9)      478,496,610       5.3       688,900
-    //    25,001(9)      119,649,849       1.4       344,456
-    //    10,001(9)       19,155,868       0.23      137,788
-    //     5,001(9)        4,794,110       0.055      68,900
-    //     1,001(9)          193,368       0.002      13,788
-
-    //    50,001(8)      527,446,878
-    //    25,001(8)      131,887,503
-    //    10,001(8)       21,114,378
-
-    //    54,932(4)    1,320,263,154
-    //    50,001(4)    1,093,875,003
-    //    25,001(4)      273,500,003
-    //    10,001(4)       43,775,003
-    //     5,001(4)       10,950,003
-    //     2,001(4)        1,755,003
-    //     1,001(4)          440,003
-    //       501(4)          110,628
-    //       201(4)           18,003
-    //       101(4)            4,628
-    //        51(4)            1,222
-    //        21(4)              228
-    //        11(4)               72
-
-    // (*) Here, the number in parentheses such as
-    // (9), (8) or (4) means calculating groups
-    // of 9, 8 or 4 digits per loop, corresponding
-    // to the template parameter loop_digit.
-
+  private:
     static constexpr auto result_digit = ResultDigit;
     static constexpr auto loop_digit   = LoopDigit;
 
@@ -65,36 +37,22 @@
     static_assert((loop_digit >= UINT32_C(4)) && (loop_digit <= UINT32_C(9)),
                   "Error: loop_digit is outside its range of 4...9");
 
-    static constexpr auto input_scale(std::uint32_t x) -> std::uint32_t
-    {
-      return
-        static_cast<std::uint32_t>
-        (
-          static_cast<std::uint32_t>(x * static_cast<std::uint32_t>((static_cast<std::uint32_t>(UINT32_C(10) * loop_digit) / UINT32_C(3)) + UINT32_C(1))) / loop_digit
-        );
-    }
-
-    static constexpr auto pow10(std::uint32_t n) -> std::uint32_t
-    {
-      return ((n == UINT32_C(0)) ? UINT32_C(1) : pow10(n - UINT32_C(1)) * UINT32_C(10));
-    }
-
-    static constexpr auto d_init() -> std::uint32_t { return pow10(loop_digit) / UINT32_C(5); }
-
   public:
+    static const std::string pi_control_string;
+
     using output_value_type = std::uint8_t;
 
-    constexpr pi_spigot_base() = default;
+    constexpr pi_spigot() = default;
 
-    pi_spigot_base(const pi_spigot_base&) = delete;
+    pi_spigot(const pi_spigot&) = delete;
 
-    pi_spigot_base(pi_spigot_base&&) = delete;
+    pi_spigot(pi_spigot&&) = delete;
 
-    virtual ~pi_spigot_base() = default;
+    virtual ~pi_spigot() = default;
 
-    auto operator=(const pi_spigot_base&) -> pi_spigot_base& = delete;
+    auto operator=(const pi_spigot&) -> pi_spigot& = delete;
 
-    auto operator=(pi_spigot_base&&) -> pi_spigot_base& = delete;
+    auto operator=(pi_spigot&&) -> pi_spigot& = delete;
 
     static constexpr auto get_output_static_size() -> std::uint32_t
     {
@@ -116,15 +74,85 @@
       return (std::min)(my_j, get_output_static_size());
     }
 
-    static auto pi_control_string() -> const std::string&;
+    template<typename InputIteratorType,
+             typename OutputIteratorType>
+    auto calculate(InputIteratorType  input_first, OutputIteratorType output_first) -> void
+    {
+      // Use pi_spigot::calculate() to calculate
+      // result_digit decimal digits of pi.
 
-  protected:
-    // TBD: Reduce (or eliminate) reliance on protected members.
-    std::uint32_t  my_c = 0U;               // NOLINT(misc-non-private-member-variables-in-classes)
-    std::uint64_t  my_d = 0U;               // NOLINT(misc-non-private-member-variables-in-classes)
-    std::uint32_t  my_j = 0U;               // NOLINT(misc-non-private-member-variables-in-classes)
-    std::uintmax_t my_operation_count = 0U; // NOLINT(misc-non-private-member-variables-in-classes)
-    std::uint32_t  my_output_count    = 0U; // NOLINT(misc-non-private-member-variables-in-classes)
+      // The caller is responsible for providing both
+      // input memory for the internal calculation details
+      // as well as output memory for the result of pi.
+
+      my_c               = UINT32_C(0);
+      my_output_count    = UINT32_C(0);
+      my_operation_count = UINTMAX_C(0);
+
+      // Operation count Mathematica(R), example for loop_digit=9.
+      // Sum[Floor[((d - j) (Floor[((10 9)/3)] + 1))/9], {j, 0, Floor[d/9] 9, 9}]
+      for(my_j = UINT32_C(0); my_j < result_digit; my_j += loop_digit)
+      {
+        my_d = UINT64_C(0);
+
+        auto i =
+          static_cast<std::int32_t>
+          (
+            input_scale(result_digit - my_j) - INT32_C(1)
+          );
+
+        for( ; i >= INT32_C(0); --i)
+        {
+          const std::uint32_t di =
+            ((my_j == UINT32_C(0)) ? d_init() : input_first[static_cast<std::uint32_t>(i)]);
+
+          my_d +=
+            static_cast<std::uint64_t>(static_cast<std::uint64_t>(di) * pow10(loop_digit));
+
+          const auto b =
+            static_cast<std::uint32_t>
+            (
+              static_cast<std::uint32_t>(static_cast<std::uint32_t>(i) * UINT32_C(2)) + UINT32_C(1)
+            );
+
+          input_first[static_cast<std::uint32_t>(i)] = static_cast<std::uint32_t>(my_d % b);
+
+          my_d /= b;
+
+          if(i > INT32_C(1))
+          {
+            my_d *= static_cast<std::uint32_t>(i);
+          }
+
+          ++my_operation_count;
+        }
+
+        do_extract_digit_group(output_first);
+      }
+    }
+
+  private:
+    std::uint32_t  my_c               = 0U;
+    std::uint64_t  my_d               = 0U;
+    std::uint32_t  my_j               = 0U;
+    std::uintmax_t my_operation_count = 0U;
+    std::uint32_t  my_output_count    = 0U;
+
+    static constexpr auto input_scale(std::uint32_t x) -> std::uint32_t
+    {
+      return
+        static_cast<std::uint32_t>
+        (
+          static_cast<std::uint32_t>(x * static_cast<std::uint32_t>((static_cast<std::uint32_t>(UINT32_C(10) * loop_digit) / UINT32_C(3)) + UINT32_C(1))) / loop_digit
+        );
+    }
+
+    static constexpr auto pow10(std::uint32_t n) -> std::uint32_t
+    {
+      return ((n == UINT32_C(0)) ? UINT32_C(1) : pow10(n - UINT32_C(1)) * UINT32_C(10));
+    }
+
+    static constexpr auto d_init() -> std::uint32_t { return pow10(loop_digit) / UINT32_C(5); }
 
     template<typename OutputInputIterator>
     auto do_extract_digit_group(OutputInputIterator output_first) -> void
@@ -173,105 +201,13 @@
 
       my_output_count += n;
     }
-  };
 
-  // The pi spigot program, as single-shot calculation.
-  template<const std::uint32_t ResultDigit,
-           const std::uint32_t LoopDigit>
-  class pi_spigot_single : public pi_spigot_base<ResultDigit, LoopDigit>
-  {
-  private:
-    using base_class_type = pi_spigot_base<ResultDigit, LoopDigit>;
-
-  public:
-    pi_spigot_single() = default;
-
-    pi_spigot_single(const pi_spigot_single&) = default;
-
-    auto operator=(const pi_spigot_single&) -> pi_spigot_single& = default;
-
-    pi_spigot_single(pi_spigot_single&&) noexcept = default;
-
-    ~pi_spigot_single() override = default;
-
-    auto operator=(pi_spigot_single&&) noexcept -> pi_spigot_single& = default;
-
-    // TBD: Can this (and basically the whole calculatoin) be made C++20 constexpr?
-
-    template<typename InputIteratorType,
-             typename OutputIteratorType>
-    auto calculate(InputIteratorType  input_first, OutputIteratorType output_first) -> void
-    {
-      // Use pi_spigot::calculate() to calculate
-      // result_digit decimal digits of pi.
-
-      // The caller is responsible for providing both
-      // input memory for the internal calculation details
-      // as well as output memory for the result of pi.
-
-      base_class_type::my_c               = UINT32_C(0);
-      base_class_type::my_output_count    = UINT32_C(0);
-      base_class_type::my_operation_count = UINTMAX_C(0);
-
-      // Operation count Mathematica(R), example for loop_digit=9.
-      // Sum[Floor[((d - j) (Floor[((10 9)/3)] + 1))/9], {j, 0, Floor[d/9] 9, 9}]
-      for(base_class_type::my_j = UINT32_C(0); base_class_type::my_j < base_class_type::result_digit; base_class_type::my_j += base_class_type::loop_digit)
-      {
-        base_class_type::my_d = UINT64_C(0);
-
-        auto i =
-          static_cast<std::int32_t>
-          (
-            base_class_type::input_scale(base_class_type::result_digit - base_class_type::my_j) - INT32_C(1)
-          );
-
-        for( ; i >= INT32_C(0); --i)
-        {
-          const std::uint32_t di =
-            ((base_class_type::my_j == UINT32_C(0)) ? base_class_type::d_init() : input_first[static_cast<std::uint32_t>(i)]);
-
-          base_class_type::my_d +=
-            static_cast<std::uint64_t>(static_cast<std::uint64_t>(di) * base_class_type::pow10(base_class_type::loop_digit));
-
-          const auto b =
-            static_cast<std::uint32_t>
-            (
-              static_cast<std::uint32_t>(static_cast<std::uint32_t>(i) * UINT32_C(2)) + UINT32_C(1)
-            );
-
-          input_first[static_cast<std::uint32_t>(i)] = static_cast<std::uint32_t>(base_class_type::my_d % b);
-
-          base_class_type::my_d /= b;
-
-          if(i > INT32_C(1))
-          {
-            base_class_type::my_d *= static_cast<std::uint32_t>(i);
-          }
-
-          ++base_class_type::my_operation_count;
-        }
-
-        base_class_type::do_extract_digit_group(output_first);
-      }
-    }
-  };
-
-  #if (__cplusplus >= 201703L)
-  } // namespace math::constants
-  #else
-  } // namespace constants
-  } // namespace math
-  #endif
-
-  template<const std::uint32_t ResultDigit, const std::uint32_t LoopDigit>
-  auto math::constants::pi_spigot_base<ResultDigit, LoopDigit>::pi_control_string() -> const std::string&
-  {
     // 103,010 decimal digits of pi.
     #if defined(PI_SPIGOT_HAS_COVERAGE)
-    static const char* pi_control_data[ 12U] =
+    static constexpr std::array<const char*,  12U> pi_control_data =
     #else
     //static const char* pi_control_data[104U] =
-    static const std::array<std::string, 104U> pi_control_data =
+    static constexpr std::array<const char*, 104U> pi_control_data =
     #endif
     {
       "3",
@@ -381,17 +317,28 @@
       "2359648070"
       #endif
     };
+  };
 
-    static const std::string pi_control_string =
-      std::accumulate(std::begin(pi_control_data),
-                      std::end  (pi_control_data),
-                      std::string(),
-                      [](const std::string& str_in, const std::string& str_next) -> std::string
-                      {
-                        return str_in + str_next;
-                      });
+  template<const std::uint32_t ResultDigit,
+           const std::uint32_t LoopDigit>
+  const std::string pi_spigot<ResultDigit, LoopDigit>::pi_control_string = // NOLINT(cert-err58-cpp)
+  []() -> std::string
+  {
+    std::string str_result;
 
-    return pi_control_string;
-  }
+    for(auto pstr : pi_control_data) // NOLINT(llvm-qualified-auto,readability-qualified-auto)
+    {
+      str_result += std::string(pstr);
+    }
+
+    return str_result;
+  }();
+
+  #if (__cplusplus >= 201703L)
+  } // namespace math::constants
+  #else
+  } // namespace constants
+  } // namespace math
+  #endif
 
 #endif // SPI_SPIGOT_2022_06_08_H

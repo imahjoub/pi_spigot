@@ -107,7 +107,7 @@ with input size while the computational complexity grows
 quadratically.
 
 The table below lists memory consumption and computation time
-on a PC platform running GCC 9 with instamntiation of
+on a PC platform running GCC 9 with instantiation of
 `pi_spigot_single<N, 9U>`, where `N` varies.
 
 |N (digits)  | Memory Consumption | Operation Count  | Time (s) |
