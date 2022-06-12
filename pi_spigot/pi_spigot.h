@@ -1,4 +1,12 @@
-﻿#ifndef SPI_SPIGOT_2022_06_08_H
+﻿///////////////////////////////////////////////////////////////////////////////
+//  Copyright Iliass Mahjoub 2022.
+//  Copyright Christopher Kormanyos 2019 - 2022.
+//  Distributed under the Boost Software License,
+//  Version 1.0. (See accompanying file LICENSE_1_0.txt
+//  or copy at http://www.boost.org/LICENSE_1_0.txt)
+//
+
+#ifndef SPI_SPIGOT_2022_06_08_H
   #define SPI_SPIGOT_2022_06_08_H
 
   #include <algorithm>
@@ -313,12 +321,12 @@
 
   template<const std::uint32_t ResultDigit,
            const std::uint32_t LoopDigit>
-  const std::string pi_spigot<ResultDigit, LoopDigit>::pi_control_string =
+  const std::string pi_spigot<ResultDigit, LoopDigit>::pi_control_string = // NOLINT(cert-err58-cpp)
   []() -> std::string
   {
     std::string str_result;
 
-    for(const auto pstr : pi_control_data)
+    for(auto pstr : pi_control_data) // NOLINT(llvm-qualified-auto)
     {
       str_result += std::string(pstr);
     }
