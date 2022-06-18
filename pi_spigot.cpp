@@ -56,6 +56,7 @@
 // cd /mnt/c/Users/User/Documents/Ks/PC_Software/Test
 // g++ -Wall -Wextra -Wpedantic -O3 -std=c++11 -finline-functions -Wconversion -Wsign-conversion pi_spigot.cpp -o pi_spigot.exe
 
+#include <chrono>
 #include <iostream>
 #include <pi_spigot/pi_spigot.h>
 
@@ -68,23 +69,22 @@ auto test_pi_spigot() -> bool
 
   using input_container_type  = std::vector<std::uint32_t>;
   using output_container_type = std::vector<std::uint8_t>;
+  using float_seconds_type    = std::chrono::duration<float>;
 
-  input_container_type  pi_in (pi_spigot_type::get_input_static_size());
+  input_container_type  pi_in(pi_spigot_type::get_input_static_size());
   output_container_type pi_out(pi_spigot_type::get_output_static_size());
 
-  const std::clock_t start = std::clock();
+  // record start time
+  auto start = std::chrono::system_clock::now();
 
   pi_spigot_type ps;
   ps.calculate(pi_in.begin(), pi_out.begin());
 
-  // TBD: Use <chrono> functions for timing measurements.
-  const auto stop = std::clock();
+  // record end time
+  auto stop = std::chrono::system_clock::now();
 
-  const auto elapsed =
-    static_cast<float>
-    (
-      static_cast<float>(stop - start) / static_cast<float>(CLOCKS_PER_SEC)
-    );
+  auto elapsed =
+   std::chrono::duration_cast<float_seconds_type>(stop - start);
 
   {
     const bool result_test_pi_spigot_single_is_ok =
@@ -106,7 +106,7 @@ auto test_pi_spigot() -> bool
               << "elapsed time: "
               << std::setprecision(3)
               << std::fixed
-              << elapsed
+              << elapsed.count()
               << "s"
               << std::endl
               << "operation_count: "
