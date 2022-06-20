@@ -84,8 +84,10 @@ auto test_pi_spigot() -> bool
   const auto stop = local_clock_type::now();
 
   auto elapsed =
-    std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count();
-
+    static_cast<double>
+    (
+      std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count()
+    );
   {
     const bool result_test_pi_spigot_single_is_ok =
       std::equal(pi_out.cbegin(),

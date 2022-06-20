@@ -48,7 +48,7 @@
 
     pi_spigot(pi_spigot&&) = delete;
 
-    virtual ~pi_spigot() = default;
+    virtual ~pi_spigot() = default; // LCOV_EXCL_LINE
 
     auto operator=(const pi_spigot&) -> pi_spigot& = delete;
 
