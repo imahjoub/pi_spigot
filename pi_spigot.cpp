@@ -69,23 +69,25 @@ auto test_pi_spigot() -> bool
 
   using input_container_type  = std::vector<std::uint32_t>;
   using output_container_type = std::vector<std::uint8_t>;
-  using float_seconds_type    = std::chrono::duration<float>;
+  using local_clock_type      = std::chrono::high_resolution_clock;
 
   input_container_type  pi_in(pi_spigot_type::get_input_static_size());
   output_container_type pi_out(pi_spigot_type::get_output_static_size());
 
   // record start time
-  auto start = std::chrono::system_clock::now();
+  const auto start = local_clock_type::now();
 
   pi_spigot_type ps;
   ps.calculate(pi_in.begin(), pi_out.begin());
 
   // record end time
-  auto stop = std::chrono::system_clock::now();
+  const auto stop = local_clock_type::now();
 
   auto elapsed =
-   std::chrono::duration_cast<float_seconds_type>(stop - start);
-
+    static_cast<double>
+    (
+      std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count()
+    );
   {
     const bool result_test_pi_spigot_single_is_ok =
       std::equal(pi_out.cbegin(),
@@ -106,7 +108,7 @@ auto test_pi_spigot() -> bool
               << "elapsed time: "
               << std::setprecision(3)
               << std::fixed
-              << elapsed.count()
+              << elapsed / 1000000.0
               << "s"
               << std::endl
               << "operation_count: "
