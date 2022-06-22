@@ -1,11 +1,19 @@
 ﻿pi_spigot
 ==================
-
-[![Build Status](https://github.com/imahjoub/pi_spigot/actions/workflows/pi_spigot.yml/badge.svg)](https://github.com/imahjoub/pi_spigot/actions)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=imahjoub_pi_spigot&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=imahjoub_pi_spigot)
-[![codecov](https://codecov.io/gh/imahjoub/pi_spigot/branch/main/graph/badge.svg?token=qHWXbNXQPx)](https://codecov.io/gh/imahjoub/pi_spigot)
-[![Boost Software License 1.0](https://img.shields.io/badge/license-BSL%201.0-blue.svg)](https://github.com/imahjoub/pi_spigot/blob/main/LICENSE_1_0.txt)
-[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/imahjoub/pi_spigot)](https://github.com/imahjoub/pi_spigot)
+<p align="center">
+    <a href="https://github.com/imahjoub/pi_spigot/actions">
+        <img src="https://github.com/imahjoub/pi_spigot/actions/workflows/pi_spigot.yml/badge.svg" alt="Build Status"></a>
+    <a href="https://sonarcloud.io/summary/new_code?id=imahjoub_pi_spigot">
+        <img src="https://sonarcloud.io/api/project_badges/measure?project=imahjoub_pi_spigot&metric=alert_status" alt="Quality Gate Status"></a>
+    <a href="https://codecov.io/gh/imahjoub/pi_spigot">
+        <img src="https://codecov.io/gh/imahjoub/pi_spigot/branch/main/graph/badge.svg?token=3LIK8E96FC" alt="code coverage"></a>
+    <a href="https://github.com/imahjoub/pi_spigot" alt="GitHub code size in bytes">
+        <img src="https://img.shields.io/github/languages/code-size/imahjoub/pi_spigot" /></a>
+    <a href="https://github.com/imahjoub/pi_spigot/blob/main/LICENSE_1_0.txt">
+        <img src="https://img.shields.io/badge/license-BSL%201.0-blue.svg" alt="Boost Software License 1.0"></a>
+    <a href="https://github.com/imahjoub/pi_spigot" alt="Activity">
+        <img src="https://img.shields.io/github/commit-activity/m/imahjoub/pi_spigot" /></a>
+</p>
 
 The pi_spigot repository implements
 a spigot-type algorithm in modern C++ template code.
