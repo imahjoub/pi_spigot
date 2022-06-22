@@ -2,7 +2,7 @@
 ==================
 
 [![Build Status](https://github.com/imahjoub/pi_spigot/actions/workflows/pi_spigot.yml/badge.svg)](https://github.com/imahjoub/pi_spigot/actions)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=imahjoub_hash_sha256&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=imahjoub_hash_sha256)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=imahjoub_pi_spigot&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=imahjoub_pi_spigot)
 [![codecov](https://codecov.io/gh/imahjoub/pi_spigot/branch/main/graph/badge.svg?token=qHWXbNXQPx)](https://codecov.io/gh/imahjoub/pi_spigot)
 [![Boost Software License 1.0](https://img.shields.io/badge/license-BSL%201.0-blue.svg)](https://github.com/imahjoub/pi_spigot/blob/main/LICENSE_1_0.txt)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/imahjoub/pi_spigot)](https://github.com/imahjoub/pi_spigot)
