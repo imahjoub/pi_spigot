@@ -88,6 +88,7 @@ auto test_pi_spigot() -> bool
     (
       std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count()
     );
+
   {
     const bool result_test_pi_spigot_single_is_ok =
       std::equal(pi_out.cbegin(),
