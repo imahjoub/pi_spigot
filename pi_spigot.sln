@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.352
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pi_spigot", "pi_spigot.vcxproj", "{2E663405-3F53-44D0-9CDA-55A279B89BB3}"
 EndProject
@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\pi_spigot.yml = .github\workflows\pi_spigot.yml
 		.github\workflows\pi_spigot_codecov.yml = .github\workflows\pi_spigot_codecov.yml
+		.github\workflows\pi_spigot_sonar.yml = .github\workflows\pi_spigot_sonar.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_doc", "_doc", "{12A4FEF1-AD0A-4896-B4F7-86959E9F2541}"
