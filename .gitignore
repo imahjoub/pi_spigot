@@ -1,5 +1,4 @@
-
 .vs/*
-Debug/*
-Release/*
-pi_spigot.vcxproj.user
+Out/*
+*.user
+
