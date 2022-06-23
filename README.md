@@ -52,19 +52,19 @@ in base-10 is given by
 ![spigotalgo](https://latex.codecogs.com/svg.image?\pi=2&plus;\dfrac{1}{3}\Biggl(2&plus;\dfrac{2}{5}\Biggl(2&plus;\dfrac{3}{7}\Biggl(2&plus;\ldots\Biggr)\Biggr)\Biggr))
 
 In the code, this equation is primarily implemented in the
-`calculate()` method of the `pi_spigot_single` template class
+`calculate()` method of the `pi_spigot` template class
 which resides in namespace `math::constants`.
 
-## Using the `pi_spigot_single` template class
+## Using the `pi_spigot` template class
 
-The signature of the `pi_spigot_single` template class is shown below.
+The signature of the `pi_spigot` template class is shown below.
 
 ```cpp
 namespace math::constants {
 
 template<const std::uint32_t ResultDigit,
          const std::uint32_t LoopDigit>
-class pi_spigot_single;
+class pi_spigot;
 
 }
 ```
@@ -99,7 +99,7 @@ A C++ alias can be used to conveniently set the
 digit characteristics used in the spigot calculation.
 
 ```cpp
-using pi_spigot_type = math::constants::pi_spigot_single<100001U, 9U>;
+using pi_spigot_type = math::constants::pi_spigot<100001U, 9U>;
 ```
 
 The default configuration
@@ -107,7 +107,7 @@ in the pi_spigot repository uses `100001` decimal digits
 with digit granularity of `9`, as shown.
 The exact template instantiation is actually done in two steps in the code
 (via secondary subroutine). The instantiation actually
-takes place with named parameters in the `test_pi_spigot_single()`
+takes place with named parameters in the `test_pi_spigot()`
 template subroutine.
 
 ## Timing and memory consumption
@@ -119,7 +119,7 @@ quadratically.
 
 The table below lists memory consumption and computation time
 on a PC platform running GCC 9 with instantiation of
-`pi_spigot_single<N, 9U>`, where `N` varies.
+`pi_spigot<N, 9U>`, where `N` varies.
 
 |N (digits)  | Memory Consumption | Operation Count  | Time (s) |
 | ---------- | ------------------ | ---------------- | -------- |
