@@ -4,7 +4,11 @@
     <a href="https://github.com/imahjoub/pi_spigot/actions">
         <img src="https://github.com/imahjoub/pi_spigot/actions/workflows/pi_spigot.yml/badge.svg" alt="Build Status"></a>
     <a href="https://github.com/imahjoub/pi_spigot/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc">
-        <img src="https://custom-icon-badges.herokuapp.com/github/issues-raw/imahjoub/pi_spigot?logo=github" alt="Issues" /></a>    
+        <img src="https://custom-icon-badges.herokuapp.com/github/issues-raw/imahjoub/pi_spigot?logo=github" alt="Issues" /></a>
+    <a href="https://lgtm.com/projects/g/imahjoub/pi_spigot/context:cpp">
+        <img src="https://img.shields.io/lgtm/grade/cpp/g/imahjoub/pi_spigot.svg?logo=lgtm&logoWidth=18" alt="Language grade: C/C++" /></a>
+    <a href="https://lgtm.com/projects/g/imahjoub/pi_spigot/alerts/?mode=list">
+        <img src="https://img.shields.io/lgtm/alerts/g/imahjoub/pi_spigot.svg?logo=lgtm&logoWidth=18" alt="Total alerts" /></a>
     <a href="https://sonarcloud.io/summary/new_code?id=imahjoub_pi_spigot">
         <img src="https://sonarcloud.io/api/project_badges/measure?project=imahjoub_pi_spigot&metric=alert_status" alt="Quality Gate Status"></a>
     <a href="https://codecov.io/gh/imahjoub/pi_spigot">
