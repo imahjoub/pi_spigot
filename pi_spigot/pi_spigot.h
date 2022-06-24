@@ -1,10 +1,10 @@
-﻿///////////////////////////////////////////////////////////////////////////////
-//  Copyright Iliass Mahjoub 2022.
-//  Copyright Christopher Kormanyos 2019 - 2022.
-//  Distributed under the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt
-//  or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
+﻿///////////////////////////////////////////////////////////////////
+//  Copyright Iliass Mahjoub 2022.                               //
+//  Copyright Christopher Kormanyos 2019 - 2022.                 //
+//  Distributed under the Boost Software License,                //
+//  Version 1.0. (See accompanying file LICENSE_1_0.txt          //
+//  or copy at http://www.boost.org/LICENSE_1_0.txt)             //
+///////////////////////////////////////////////////////////////////
 
 #ifndef SPI_SPIGOT_2022_06_08_H
   #define SPI_SPIGOT_2022_06_08_H
