@@ -14,7 +14,7 @@
     <a href="https://github.com/imahjoub/pi_spigot/blob/main/LICENSE_1_0.txt">
         <img src="https://img.shields.io/badge/license-BSL%201.0-blue.svg" alt="Boost Software License 1.0"></a>
     <a href="https://github.com/imahjoub/pi_spigot" alt="Activity">
-        <img src="https://img.shields.io/github/commit-activity/m/imahjoub/pi_spigot" /></a>
+        <img src="https://img.shields.io/github/commit-activity/y/imahjoub/pi_spigot" /></a>
 </p>
 
 The pi_spigot repository implements
