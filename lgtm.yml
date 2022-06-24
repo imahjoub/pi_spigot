@@ -1,0 +1,33 @@
+# -----------------------------------------------------
+#  Copyright Iliass Mahjoub 2022.                     
+#  Copyright Christopher Kormanyos 2019 - 2022.       
+#  Distributed under the Boost Software License,      
+#  Version 1.0. (See accompanying file LICENSE_1_0.txt
+#  or copy at http://www.boost.org/LICENSE_1_0.txt)   
+# -----------------------------------------------------
+
+path_classifiers:
+  test:
+    - "*pi_spigot.cpp"
+  docs:
+    - generate_javadoc.py
+queries:
+  - exclude: cpp/use-of-goto
+extraction:
+  cpp:
+    prepare:    # Customizable step used by all languages.
+      packages:
+        - g++-6
+    after_prepare:    # Customizable step used by all languages.
+      - export GNU_MAKE=make
+      - export GIT=true
+    configure:    # Customizable step used only by C/C++ extraction.
+      command:
+    before_index:    # Customizable step used by all languages.
+      - export BOOST_DIR=$LGTM_SRC/boost
+      - export GTEST_DIR=$LGTM_SRC/googletest
+      - export HUNSPELL_DIR=$LGTM_SRC/hunspell
+      - export CRYPTOPP_DIR=$LGTM_SRC/cryptopp
+    index:    # Customizable step used by all languages.
+      build_command:
+        - g++ -Werror -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -O3 -std=c++2a pi_spigot.cpp -I. -o pi_spigot.exe
