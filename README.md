@@ -140,7 +140,11 @@ GCC/clang/MSVC.
 Code coverage uses GCC/gcov/lcov and has a
 quality-gate with comparison/baseline-check provided by third-party [Codecov](https://app.codecov.io/gh/imahjoub/pi_spigot).
 
-TBD Provide use linters and describe them.
+Additional quality checks are performed on pull-request
+and merge to master using modern third party open-source services.
+These include
+[LGTM](https://lgtm.com/projects/g/imahjoub/pi_spgot/alerts/?mode=list)
+and [CodeSonar](https://sonarcloud.io/summary/new_code?id=imahjoub_pi_spigot).
 
 ## Possible extensions
 
