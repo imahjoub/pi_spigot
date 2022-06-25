@@ -32,6 +32,6 @@ extraction:
       - export GTEST_DIR=$LGTM_SRC/googletest
     index:                                                                # Customizable step used by all languages.
       build_command:
-        - echo print gccc version
+        - echo print gcc version
         - g++ --version
         - g++ -Werror -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -O3 -std=c++2a pi_spigot.cpp -I. -o pi_spigot.exe
