@@ -22,7 +22,7 @@ extraction:
   cpp:
     prepare:                                                              # Customizable step used by all languages.
       packages:
-        - g++-6
+        - g++-11
     after_prepare:                                                        # Customizable step used by all languages.
       - export GIT=true
     configure:                                                            # Customizable step used only by C/C++ extraction.
@@ -32,6 +32,6 @@ extraction:
       - export GTEST_DIR=$LGTM_SRC/googletest
     index:                                                                # Customizable step used by all languages.
       build_command:
-        - echo print gccc version
+        - echo print gcc version
         - g++ --version
         - g++ -Werror -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -O3 -std=c++2a pi_spigot.cpp -I. -o pi_spigot.exe
