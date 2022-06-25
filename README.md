@@ -143,7 +143,7 @@ quality-gate with comparison/baseline-check provided by third-party [Codecov](ht
 Additional quality checks are performed on pull-request
 and merge to master using modern third party open-source services.
 These include
-[LGTM](https://lgtm.com/projects/g/imahjoub/pi_spgot/alerts/?mode=list)
+[LGTM](https://lgtm.com/projects/g/imahjoub/pi_spigot/alerts/?mode=list)
 and [CodeSonar](https://sonarcloud.io/summary/new_code?id=imahjoub_pi_spigot).
 
 ## Possible extensions
