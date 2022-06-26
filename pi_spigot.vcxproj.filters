@@ -15,11 +15,27 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="codecov.yml" />
+    <None Include="codecov.yml">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include=".clang-tidy">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="lgtm.yml">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="sonar-project.properties">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pi_spigot\pi_spigot.h">
       <Filter>Source Files\pi_spigot</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="LICENSE_1_0.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

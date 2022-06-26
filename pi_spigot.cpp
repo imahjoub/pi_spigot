@@ -80,6 +80,9 @@ auto test_pi_spigot() -> bool
   const auto start = local_clock_type::now();
 
   pi_spigot_type ps;
+
+  auto result_is_ok = (ps.get_operation_count() == UINTMAX_C(0));
+
   ps.calculate(pi_in.begin(), pi_out.begin());
 
   // record end time
@@ -92,7 +95,10 @@ auto test_pi_spigot() -> bool
     );
 
   {
-    const bool result_test_pi_spigot_single_is_ok =
+
+    const auto original_flags = std::cout.flags();
+
+    const auto result_test_pi_spigot_single_is_ok =
       std::equal(pi_out.cbegin(),
                  pi_out.cend(),
                  pi_spigot_type::pi_control_string.cbegin(),
@@ -100,6 +106,14 @@ auto test_pi_spigot() -> bool
                  {
                    return (by == static_cast<std::uint8_t>(static_cast<std::uint8_t>(c) - UINT8_C(0x30)));
                  });
+
+    result_is_ok = (result_test_pi_spigot_single_is_ok && result_is_ok);
+
+    const auto operation_count = ps.get_operation_count();
+
+    const auto result_operation_count_is_ok = (operation_count > UINTMAX_C(0));
+
+    result_is_ok = (result_operation_count_is_ok && result_is_ok);
 
     std::cout << "result_digit: "
               << result_digit
@@ -115,15 +129,17 @@ auto test_pi_spigot() -> bool
               << "s"
               << std::endl
               << "operation_count: "
-              << ps.get_operation_count()
+              << operation_count
               << std::endl
               << "input memory consumption: "
               << pi_in.size() * sizeof(input_container_type::value_type)
               << std::endl
               << std::endl;
 
-    return result_test_pi_spigot_single_is_ok;
+    std::cout.flags(original_flags);
   }
+
+  return result_is_ok;
 }
 
 auto main() -> int
