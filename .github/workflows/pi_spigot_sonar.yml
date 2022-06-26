@@ -1,4 +1,4 @@
-# -----------------------------------------------------
+﻿# -----------------------------------------------------
 #  Copyright Iliass Mahjoub 2022.                     
 #  Copyright Christopher Kormanyos 2019 - 2022.       
 #  Distributed under the Boost Software License,      
@@ -25,15 +25,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: clone-submods-bootstrap-headers-boost-develop
-        run: |
-          git clone -b develop --depth 1 https://github.com/boostorg/boost.git ../boost-root
-          cd ../boost-root
-          git submodule update --init tools
-          git submodule update --init libs/config
-          git submodule update --init libs/multiprecision
-          ./bootstrap.sh
-          ./b2 headers
       - name: Set up JDK 11
         uses: actions/setup-java@v1
         with:
