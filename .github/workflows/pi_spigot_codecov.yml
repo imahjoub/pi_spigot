@@ -33,8 +33,8 @@ jobs:
       - name: gnumake-gcc-gcov-native
         run: |
           echo "build and run gcov/lcov/genhtml"
-          g++ -x c++ -c -mtune=native -march=native -O2 -Wall -Wextra -Wconversion -Wsign-conversion -std=c++2a -fno-inline-functions -fprofile-arcs -ftest-coverage -DPI_SPIGOT_HAS_COVERAGE pi_spigot.cpp -I. -o pi_spigot.o
-          g++ -mtune=native -march=native -O2 -Wall -Wextra -Wconversion -Wsign-conversion -std=c++2a -fno-inline-functions -fprofile-arcs -ftest-coverage -DPI_SPIGOT_HAS_COVERAGE pi_spigot.o -o pi_spigot.exe
+          g++ -x c++ -c -mtune=native -march=native -O1 -Wall -Wextra -Wconversion -Wsign-conversion -std=c++2a -fno-inline -fkeep-inline-functions -fno-elide-constructors -fprofile-arcs -ftest-coverage -fprofile-generate -DPI_SPIGOT_HAS_COVERAGE pi_spigot.cpp -I. -o pi_spigot.o
+          g++ -mtune=native -march=native -O1 -Wall -Wextra -Wconversion -Wsign-conversion -std=c++2a -fno-inline -fkeep-inline-functions -fno-elide-constructors -fprofile-arcs -ftest-coverage -fprofile-generate -DPI_SPIGOT_HAS_COVERAGE pi_spigot.o -o pi_spigot.exe
           ./pi_spigot.exe
           gcov --all-blocks --branch-counts --branch-probabilities --function-summaries --unconditional-branches --object-directory . --demangled-names ./pi_spigot.cpp
           lcov --rc lcov_branch_coverage=1 -c --directory . --output-file coverage_unfiltered.info
