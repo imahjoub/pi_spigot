@@ -44,7 +44,7 @@
 
     using output_value_type = std::uint8_t;
 
-    constexpr pi_spigot() = default;
+    constexpr pi_spigot() = default; // LCOV_EXCL_LINE
 
     pi_spigot(const pi_spigot&) = delete;
 
@@ -330,7 +330,7 @@
 
     for(auto pstr : pi_control_data) // NOLINT(llvm-qualified-auto,readability-qualified-auto)
     {
-      str_result += std::string(pstr);
+      str_result.insert(str_result.length(), pstr);
     }
 
     return str_result;
