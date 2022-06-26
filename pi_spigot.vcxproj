@@ -104,10 +104,16 @@
     <ClCompile Include="pi_spigot.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".clang-tidy" />
     <None Include="codecov.yml" />
+    <None Include="lgtm.yml" />
+    <None Include="sonar-project.properties" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pi_spigot\pi_spigot.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="LICENSE_1_0.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -16,10 +16,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="codecov.yml" />
+    <None Include=".clang-tidy" />
+    <None Include="lgtm.yml" />
+    <None Include="sonar-project.properties" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pi_spigot\pi_spigot.h">
       <Filter>Source Files\pi_spigot</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="LICENSE_1_0.txt" />
   </ItemGroup>
 </Project>
