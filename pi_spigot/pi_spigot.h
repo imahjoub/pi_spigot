@@ -330,7 +330,7 @@
 
     for(auto pstr : pi_control_data) // NOLINT(llvm-qualified-auto,readability-qualified-auto)
     {
-      str_result += std::string(pstr);
+      str_result.insert(str_result.length(), pstr);
     }
 
     return str_result;
