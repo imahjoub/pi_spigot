@@ -95,7 +95,6 @@ auto test_pi_spigot() -> bool
     );
 
   {
-
     const auto original_flags = std::cout.flags();
 
     const auto result_test_pi_spigot_single_is_ok =
