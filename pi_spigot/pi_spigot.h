@@ -44,7 +44,7 @@
 
     using output_value_type = std::uint8_t;
 
-    constexpr pi_spigot() = default;
+    constexpr pi_spigot() = default; // LCOV_EXCL_LINE
 
     pi_spigot(const pi_spigot&) = delete;
 
