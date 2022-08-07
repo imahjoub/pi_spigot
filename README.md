@@ -4,7 +4,9 @@
     <a href="https://github.com/imahjoub/pi_spigot/actions">
         <img src="https://github.com/imahjoub/pi_spigot/actions/workflows/pi_spigot.yml/badge.svg" alt="Build Status"></a>
     <a href="https://github.com/imahjoub/pi_spigot/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc">
-        <img src="https://custom-icon-badges.herokuapp.com/github/issues-raw/imahjoub/pi_spigot?logo=github" alt="Issues" /></a>
+        <img src="https://custom-icon-badges.herokuapp.com/github/issues-raw/imahjoub/pi_spigot?logo=github" alt="Open Issues" /></a>
+    <a href="https://app.codacy.com/gh/imahjoub/pi_spigot/dashboard">
+        <img src="https://app.codacy.com/project/badge/Grade/4f390d179be84d87a637adbf5bd473bc" alt="Codacy Badge" /></a>
     <a href="https://lgtm.com/projects/g/imahjoub/pi_spigot/context:cpp">
         <img src="https://img.shields.io/lgtm/grade/cpp/g/imahjoub/pi_spigot.svg?logo=lgtm&logoWidth=18" alt="Language grade: C/C++" /></a>
     <a href="https://lgtm.com/projects/g/imahjoub/pi_spigot/alerts/?mode=list">
