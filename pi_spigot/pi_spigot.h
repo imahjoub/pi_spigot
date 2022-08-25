@@ -42,6 +42,7 @@
                   "Error: loop_digit is outside its range of 4...9");
 
   public:
+    // LCOV_EXCL_START
     static auto pi_control_string() -> const std::string&
     {
       static const std::string str_pi_control =
@@ -51,7 +52,7 @@
 
           for(auto pstr : pi_control_data) // NOLINT(llvm-qualified-auto,readability-qualified-auto)
           {
-            str.insert(str.length(), pstr); // LCOV_EXCL_LINE
+            str.insert(str.length(), pstr);
           }
 
           return str;
@@ -59,6 +60,7 @@
 
       return str_pi_control;
     }
+    // LCOV_EXCL_STOP
 
     using output_value_type = std::uint8_t;
 
