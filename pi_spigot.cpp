@@ -60,8 +60,8 @@
 
 #include <chrono>
 #include <iostream>
-#include <pi_spigot/pi_spigot.h>
 
+#include <pi_spigot/pi_spigot.h>
 
 template<const std::uint32_t result_digit,
          const std::uint32_t loop_digit>
