@@ -51,7 +51,7 @@
 
           for(auto pstr : pi_control_data) // NOLINT(llvm-qualified-auto,readability-qualified-auto)
           {
-            str.insert(str.length(), pstr);
+            str.insert(str.length(), pstr); // LCOV_EXCL_LINE
           }
 
           return str;
@@ -68,7 +68,7 @@
 
     constexpr pi_spigot(pi_spigot&&) = delete;
 
-    virtual constexpr ~pi_spigot() = default; // LCOV_EXCL_LINE
+    virtual ~pi_spigot() = default; // LCOV_EXCL_LINE
 
     constexpr auto operator=(const pi_spigot&) -> pi_spigot& = delete;
 
