@@ -35,6 +35,9 @@
     <ClInclude Include="pi_spigot\pi_spigot.h">
       <Filter>Source Files\pi_spigot</Filter>
     </ClInclude>
+    <ClInclude Include="pi_spigot\pi_spigot_ctrl.h">
+      <Filter>Source Files\pi_spigot</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="LICENSE_1_0.txt">

@@ -112,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pi_spigot\pi_spigot.h" />
+    <ClInclude Include="pi_spigot\pi_spigot_ctrl.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="LICENSE_1_0.txt" />

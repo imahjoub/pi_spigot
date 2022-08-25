@@ -100,7 +100,7 @@ auto test_pi_spigot() -> bool
     const auto result_test_pi_spigot_single_is_ok =
       std::equal(pi_out.cbegin(),
                  pi_out.cend(),
-                 pi_spigot_type::pi_control_string.cbegin(),
+                 pi_spigot_type::pi_control_string().cbegin(),
                  [](const std::uint8_t& by, const char& c) -> bool
                  {
                    return (by == static_cast<std::uint8_t>(static_cast<std::uint8_t>(c) - UINT8_C(0x30)));
