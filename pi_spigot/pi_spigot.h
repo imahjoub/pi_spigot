@@ -42,20 +42,22 @@
                   "Error: loop_digit is outside its range of 4...9");
 
   public:
-    static constexpr auto pi_control_string() -> std::string
+    static auto pi_control_string() -> const std::string&
     {
-      return
+      static const std::string str_pi_control =
         []()
         {
-          std::string str_pi_control { };
+          std::string str { };
 
           for(auto pstr : pi_control_data) // NOLINT(llvm-qualified-auto,readability-qualified-auto)
           {
-            str_pi_control.insert(str_pi_control.length(), pstr);
+            str.insert(str.length(), pstr);
           }
 
-          return str_pi_control;
+          return str;
         }();
+
+      return str_pi_control;
     }
 
     using output_value_type = std::uint8_t;
