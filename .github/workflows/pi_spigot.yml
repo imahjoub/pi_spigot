@@ -82,3 +82,19 @@ jobs:
           clang-tidy --version
           echo "+++ running clang-tidy"
           clang-tidy -checks="*,-cppcoreguidelines-avoid-magic-numbers,-readability-magic-numbers,-llvm-header-guard,-cppcoreguidelines-pro-bounds-constant-array-index,-fuchsia-*,-readability-identifier-naming,-cppcoreguidelines-non-private-member-variables-in-classes" --extra-arg=-std=${{ matrix.standard }} pi_spigot.cpp -- -I. -isystem*usr/lib*
+  msvc-release-x64-vs2022:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+      - uses: actions/checkout@v1
+      - uses: ilammy/msvc-dev-cmd@v1
+      - name: msvc-release-x64-vs2022
+        shell: cmd
+        working-directory: ./
+        run: |
+          set INCLUDE=%cd%;%INCLUDE%
+          MSBuild -m pi_spigot.sln -p:useenv=true -p:Configuration=Release -p:Platform=x64 /t:Rebuild
+          dir %cd%\Out\Bin\Release\pi_spigot.exe
+          %cd%\Out\Bin\Release\pi_spigot.exe
