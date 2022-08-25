@@ -8,8 +8,8 @@
 //                                                               //
 ///////////////////////////////////////////////////////////////////
 
-#ifndef PI_SPIGOT_BASE_2022_08_25_H
-  #define PI_SPIGOT_BASE_2022_08_25_H
+#ifndef PI_SPIGOT_CTRL_2022_08_25_H
+  #define PI_SPIGOT_CTRL_2022_08_25_H
 
   #include <array>
 
@@ -21,10 +21,10 @@
 
   // 103,010 decimal digits of pi.
   #if defined(PI_SPIGOT_HAS_COVERAGE)
-  static constexpr std::array<const char*,  12U> pi_control_data =
+  static inline constexpr std::array<const char*,  12U> pi_control_data =
   #else
   //static const char* pi_control_data[104U] =
-  static constexpr std::array<const char*, 104U> pi_control_data =
+  static inline constexpr std::array<const char*, 104U> pi_control_data =
   #endif
   {
     "3",
@@ -142,4 +142,4 @@
   } // namespace math
   #endif
 
-#endif // PI_SPIGOT_BASE_2022_08_25_H
+#endif // PI_SPIGOT_CTRL_2022_08_25_H
