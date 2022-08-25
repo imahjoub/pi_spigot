@@ -42,7 +42,7 @@
                   "Error: loop_digit is outside its range of 4...9");
 
   public:
-    static inline const std::string pi_control_string =
+    static inline const std::string pi_control_string = // NOLINT(cert-err58-cpp)
       []()
       {
         std::string str { };
@@ -79,12 +79,12 @@
       return input_scale(get_output_static_size());
     }
 
-    constexpr auto get_operation_count() const -> std::uintmax_t
+    [[nodiscard]] constexpr auto get_operation_count() const -> std::uintmax_t
     {
       return my_operation_count;
     }
 
-    constexpr auto get_output_digit_count() const -> std::uint32_t
+    [[nodiscard]] constexpr auto get_output_digit_count() const -> std::uint32_t
     {
       return (std::min)(my_j, get_output_static_size());
     }
