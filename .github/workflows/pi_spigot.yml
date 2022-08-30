@@ -81,7 +81,8 @@ jobs:
           echo "+++ print clang-tidy version"
           clang-tidy --version
           echo "+++ running clang-tidy"
-          clang-tidy -checks="*,-cppcoreguidelines-avoid-magic-numbers,-readability-magic-numbers,-llvm-header-guard,-cppcoreguidelines-pro-bounds-constant-array-index,-fuchsia-*,-readability-identifier-naming,-cppcoreguidelines-non-private-member-variables-in-classes" --extra-arg=-std=${{ matrix.standard }} pi_spigot.cpp -- -I. -isystem*usr/lib*
+          #clang-tidy -checks="*,-cppcoreguidelines-avoid-magic-numbers,-readability-magic-numbers,-llvm-header-guard,-cppcoreguidelines-pro-bounds-constant-array-index,-fuchsia-*,-readability-identifier-naming,-cppcoreguidelines-non-private-member-variables-in-classes" --extra-arg=-std=${{ matrix.standard }} pi_spigot.cpp -- -I. -isystem*usr/lib*
+          clang-tidy -checks="*,-cppcoreguidelines-avoid-magic-numbers,-readability-magic-numbers,-llvm-header-guard,-cppcoreguidelines-pro-bounds-constant-array-index,-fuchsia-*,-readability-identifier-naming,-cppcoreguidelines-non-private-member-variables-in-classes" --extra-arg-before=--driver-mode=g++ pi_spigot.cpp -- ${{ matrix.compiler }} -std=${{ matrix.standard }} -O3 -Wall -Wextra -Wconversion -Wsign-conversion -I. -isystem*usr/lib*
   msvc-release-x64-vs2022:
     runs-on: windows-2022
     steps:
