@@ -63,7 +63,7 @@
 
     constexpr pi_spigot(pi_spigot&&) = delete;
 
-    virtual ~pi_spigot() = default; // LCOV_EXCL_LINE
+    constexpr virtual ~pi_spigot() = default; // LCOV_EXCL_LINE
 
     constexpr auto operator=(const pi_spigot&) -> pi_spigot& = delete;
 
