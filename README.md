@@ -26,36 +26,30 @@
 The pi_spigot repository implements
 a spigot-type algorithm in modern C++ template code.
 It calculates many decimal
-digits of the mathematical constant
-![pi](https://latex.codecogs.com/svg.image?\pi).
+digits of the mathematical constant $\pi$.
 
 The spigot-type algorithm used here has rather slow quadratic
-order ![N2](https://latex.codecogs.com/svg.image?N^{2})
-computational complexity. So you won't break
+order $N^{2}$ computational complexity.
+So you won't break
 any digit or speed records with this implementation.
 It is, however, capable of readily computing many thousands
 of digits (up to a 100,000 decimal digits or more)
-of ![pi](https://latex.codecogs.com/svg.image?\pi)
---- right out of the box and with just a few lines
+of $\pi$ -- right out of the box and with just a few lines
 of computational code.
 
 The default setting of the tests computes
-![hundredthousand](https://latex.codecogs.com/svg.image?\100,001)
-decimal digits of
-![pi](https://latex.codecogs.com/svg.image?\pi).
+$100,001$ decimal digits of $\pi$.
 
 ## Mathematical details
 
 Spigot-type algorithms are known for various mathematical constants
-including logarithms and
-![pi](https://latex.codecogs.com/svg.image?\pi).
+including logarithms and $\pi$.
 
-The basic spigot algorithm for computing digits of
-![pi](https://latex.codecogs.com/svg.image?\pi)
+The basic spigot algorithm for computing digits of $\pi$
 in base-10 is given by
 (Eq. 6.1, Sect. 6.1, page 78 of Arndt and Haenel [2]):
 
-![spigotalgo](https://latex.codecogs.com/svg.image?\pi=2&plus;\dfrac{1}{3}\Biggl(2&plus;\dfrac{2}{5}\Biggl(2&plus;\dfrac{3}{7}\Biggl(2&plus;\ldots\Biggr)\Biggr)\Biggr))
+$$\dfrac{1}{3}\Biggl(2 \plus\dfrac{2}{5}\Biggl( 2 \plus \dfrac{3}{7}\Biggl(2 \plus \ldots \Biggr)\Biggr)\Biggr)$$
 
 In the code, this equation is primarily implemented in the
 `calculate()` method of the `pi_spigot` template class
@@ -80,9 +74,7 @@ can be used to vary the size and granularity of the
 calculation (within certain limits).
 
 In order to compute, let's say,
-![tenthousand](https://latex.codecogs.com/svg.image?10,001)
-decimal digits of
-![pi](https://latex.codecogs.com/svg.image?\pi),
+$10,001$ decimal digits of $\pi$,
 the result of `ResultDigit` should be set to `10001`.
 
 The `LoopDigit` parameter controls the number of decimal
@@ -151,7 +143,7 @@ and [CodeSonar](https://sonarcloud.io/summary/new_code?id=imahjoub_pi_spigot).
 ## Possible extensions
 
 The pi-spigot algorithm in this repository can successfully
-compute up to a million digits of ![pi](https://latex.codecogs.com/svg.image?\pi).
+compute up to a million digits of $\pi$.
 It is, however, very slow with computational complexity
 growing quadratically in proportion to digit size.
 
