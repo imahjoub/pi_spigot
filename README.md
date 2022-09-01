@@ -33,8 +33,8 @@ order $N^{2}$ computational complexity.
 So you won't break
 any digit or speed records with this implementation.
 It is, however, capable of readily computing many thousands
-of digits (up to a 100,000 decimal digits or more)
-of $\pi$ -- right out of the box and with just a few lines
+of digits (up to a $\sim 100,000$ decimal digits or more)
+of $\pi$ - right out of the box and with just a few lines
 of computational code.
 
 The default setting of the tests computes
@@ -49,7 +49,7 @@ The basic spigot algorithm for computing digits of $\pi$
 in base-10 is given by
 (Eq. 6.1, Sect. 6.1, page 78 of Arndt and Haenel [2]):
 
-$$\dfrac{1}{3}\Biggl(2 \plus\dfrac{2}{5}\Biggl( 2 \plus \dfrac{3}{7}\Biggl(2 \plus \ldots \Biggr)\Biggr)\Biggr)$$
+$$\dfrac{1}{3}\Biggl(2 + \dfrac{2}{5}\Biggl( 2 + \dfrac{3}{7}\Biggl(2 + \ldots \Biggr)\Biggr)\Biggr)$$
 
 In the code, this equation is primarily implemented in the
 `calculate()` method of the `pi_spigot` template class
@@ -172,7 +172,7 @@ has been inspired by Section 10.8 of [3].
 
 [1] S. Rabinowitz and S. Wagon:
 _A_ _Spigot_ _Algorithm_ _for_ _the_ _Digits_ _of_ _Pi_,
-American Mathematical Monthly 102: 195--203, 1995
+American Mathematical Monthly 102: 195-203, 1995
 
 [2] J. Arndt and C. Haenel:
 ![pi](https://latex.codecogs.com/svg.image?\pi) _Unleashed_
