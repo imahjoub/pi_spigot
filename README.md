@@ -132,7 +132,8 @@ Various OS/compiler combinations are used including
 GCC/clang/MSVC.
 
 Code coverage uses GCC/gcov/lcov and has a
-quality-gate with comparison/baseline-check provided by third-party [Codecov](https://app.codecov.io/gh/imahjoub/pi_spigot).
+quality-gate with comparison/baseline-check provided by third-party
+[Codecov](https://app.codecov.io/gh/imahjoub/pi_spigot).
 
 Additional quality checks are performed on pull-request
 and merge to master using modern third party open-source services.
@@ -175,10 +176,9 @@ _A_ _Spigot_ _Algorithm_ _for_ _the_ _Digits_ _of_ _Pi_,
 American Mathematical Monthly 102: 195-203, 1995
 
 [2] J. Arndt and C. Haenel:
-![pi](https://latex.codecogs.com/svg.image?\pi) _Unleashed_
-(Springer Verlag, Heidelberg, 2001)
+$\pi$ _Unleashed_ (Springer Verlag, Heidelberg, 2001)
 
 [3] C.M. Kormanyos: _Real-Time_ _C++:_
 _Efficient_ _Object-Oriented_
 _and_ _Template_ _Microcontroller_ _Programming_, _4th_ _Edition_
-(Springer, Heidelberg, 2021). ISBN 9783662629956.
+(Springer Verlag, Heidelberg, 2021). ISBN 9783662629956.
