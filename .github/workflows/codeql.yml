@@ -1,0 +1,58 @@
+name: "CodeQL"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: "18 8 * * 6"
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ cpp ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes g++-20
+
+      - name: After Prepare
+        run: export GIT=true && echo "GIT=$GIT" >> $GITHUB_ENV
+
+      - name: Before Index
+        run: |
+          export BOOST_DIR=$GITHUB_WORKSPACE/boost && echo "BOOST_DIR=$BOOST_DIR" >> $GITHUB_ENV
+          export GTEST_DIR=$GITHUB_WORKSPACE/googletest && echo "GTEST_DIR=$GTEST_DIR" >> $GITHUB_ENV
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ matrix.language }}
+          config-file: ./.github/codeql.yml
+          queries: +security-and-quality
+
+      - name: Build cpp
+        run: |
+          echo print gcc version
+          g++ --version
+          g++ -Werror -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -O3 -std=c++2a pi_spigot.cpp -I. -o pi_spigot.exe
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+        with:
+          category: "/language:${{ matrix.language }}"

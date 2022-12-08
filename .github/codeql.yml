@@ -1,0 +1,12 @@
+query-filters:
+  - include:
+      id:
+        tags:
+          - security
+          - correctness
+  - include:
+      id:
+        severity: error
+  - include:
+      id:
+        severity: warning
