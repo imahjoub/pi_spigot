@@ -1,0 +1,53 @@
+# -----------------------------------------------------
+#  Copyright Iliass Mahjoub 2022.                     
+#  Copyright Christopher Kormanyos 2019 - 2022.       
+#  Distributed under the Boost Software License,      
+#  Version 1.0. (See accompanying file LICENSE_1_0.txt
+#  or copy at http://www.boost.org/LICENSE_1_0.txt)   
+# -----------------------------------------------------
+
+name: "CodeQL"
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ cpp ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ matrix.language }}
+          queries: +security-and-quality
+
+      - name: gcc-native
+        run: |
+          echo "gcc-native"
+          echo "g++ -Werror -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -O3 -std=c++2b pi_spigot.cpp -I. -o pi_spigot.exe"
+          g++ -Werror -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -O3 -std=c++2b pi_spigot.cpp -I. -o pi_spigot.exe
+          echo "ls ./pi_spigot.exe"
+          ls -la ./pi_spigot.exe
+          ./pi_spigot.exe
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+        with:
+          category: "/language:${{ matrix.language }}"
