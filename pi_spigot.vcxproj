@@ -107,7 +107,6 @@
     <None Include=".clang-tidy" />
     <None Include=".codacy.yml" />
     <None Include="codecov.yml" />
-    <None Include="lgtm.yml" />
     <None Include="sonar-project.properties" />
   </ItemGroup>
   <ItemGroup>
