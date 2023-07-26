@@ -1,9 +1,9 @@
 ﻿# -----------------------------------------------------
-#  Copyright Iliass Mahjoub 2022 - 2023.              
-#  Copyright Christopher Kormanyos 2019 - 2023.       
-#  Distributed under the Boost Software License,      
+#  Copyright Iliass Mahjoub 2022 - 2023.
+#  Copyright Christopher Kormanyos 2019 - 2023.
+#  Distributed under the Boost Software License,
 #  Version 1.0. (See accompanying file LICENSE_1_0.txt
-#  or copy at http://www.boost.org/LICENSE_1_0.txt)   
+#  or copy at http://www.boost.org/LICENSE_1_0.txt)
 # -----------------------------------------------------
 
 name: pi_spigot
@@ -99,3 +99,28 @@ jobs:
           MSBuild -m pi_spigot.sln -p:useenv=true -p:Configuration=Release -p:Platform=x64 /t:Rebuild
           dir %cd%\Out\Bin\Release\pi_spigot.exe
           %cd%\Out\Bin\Release\pi_spigot.exe
+  valgrind-check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        standard: [ c++2a ]
+        compiler: [ g++-12]
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
+      - name: update-tools
+        run: sudo apt-get install g++-12 valgrind
+      - name: valgrind-check
+        run: |
+          echo "+++ compile"
+          ${{ matrix.compiler }} -v
+          ${{ matrix.compiler }} -m64 -Werror -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -O3 -std=${{ matrix.standard }} pi_spigot.cpp -I. -o pi_spigot.exe
+          echo "+++ run valgrind"
+          valgrind --leak-check=yes --log-file=pi_spigot_valgrind.txt ./pi_spigot.exe
+          grep '0 bytes in 0 blocks' pi_spigot_valgrind.txt
+          grep '0 errors from 0 contexts' pi_spigot_valgrind.txt
